@@ -1,0 +1,22 @@
+<div  class="container-fluid">
+  <div class="row">
+    <div class="col-md-3 d-md-block d-none  mt-5" *ngIf="!loading">
+        <a routerLink="/" [class.active]="!catFilter" class="list-group-item list-group-item-action text-primary text-center">All</a>
+      <div class="list-group  " *ngFor="let item of cat">
+        <a routerLink="/" [class.active]="catFilter == item.id" [queryParams]="{cat: item.id}" class="list-group-item text-primary list-group-item-action text-center text-truncate">{{ item.name  }}</a>
+      </div>
+    </div>
+    <div class="col-9">
+      <div class="spinner-grow text-primary" role="status" *ngIf="loading">
+        <span class="sr-only">Loading...</span>
+      </div>
+      <div class="row">
+          <input type="text" class="form-control form-control-lg mt-4 " placeholder="You Can Search Here" [(ngModel)]="catFilter">
+        <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12 mt-2" *ngFor="let mov of movie | filter:catFilter">
+          <app-movie-card routerLink="/movie-details" [queryParams]="{id:mov.id}" [mov]="mov"></app-movie-card>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

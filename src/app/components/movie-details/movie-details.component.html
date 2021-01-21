@@ -1,0 +1,18 @@
+<div id="main-header" class="text-primary">
+  <div class="card">
+    <img class="card-img main-img" src="https://image.tmdb.org/t/p/w500{{ movieDetalis.backdrop_path }}" *ngIf="movieDetalis">
+    <div class="card-img-overlay" *ngIf="movieDetalis">
+      <h1 class="mt-2">{{ movieDetalis.title }}</h1>
+        <h2 class="lead" *ngIf="movieDetalis.overview">{{ movieDetalis.overview }}</h2>
+        <h2 class="lead" *ngIf="movieDetalis.status">Status : {{ movieDetalis.status }}</h2>
+        <h2 class="lead" *ngIf="movieDetalis.release_date">Release Date :  {{ movieDetalis.release_date | date }}</h2>
+        <h2 class="lead" *ngIf="movieDetalis.original_language">Language : {{ movieDetalis.original_language | uppercase }}</h2>
+        <h2 class="lead" *ngIf="movieDetalis.popularity">Popularity : {{ movieDetalis.popularity  }}</h2>
+        <h2 class="lead" *ngIf="movieDetalis.production_companies">Production Company : {{ movieDetalis.production_companies[0].name  }} </h2>
+        <h2 class="lead" *ngIf="movieDetalis.production_countries">Production Countries : {{ movieDetalis.production_countries[0].name  }}</h2>
+        <h2 class="lead" *ngIf="movieDetalis.revenue">Revenue : {{ movieDetalis.revenue | currency:'USD'  }}</h2>
+      <a [href]="movieDetalis.homepage" target="_blank" class="btn btn-outline-primary mt-2">Know More</a>
+    </div>
+  </div>
+
+</div>

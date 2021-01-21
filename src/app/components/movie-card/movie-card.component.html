@@ -13,10 +13,9 @@
         Range: {{ mov.vote_average }}
       </p>
       <p class="card-text text-truncate justify-content-end text-muted">
-        {{ mov.release_date }}
+        {{ mov.release_date | date }}
       </p>
     </div>
-    <p>{{ mov.genre_ids  }}</p>
-    <a href="#" class="btn btn-primary">Go somewhere</a>
+    <p class="d-none">{{ mov.genre_ids  }}</p>
   </div>
 </div>

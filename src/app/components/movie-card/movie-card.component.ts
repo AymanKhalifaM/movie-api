@@ -7,7 +7,7 @@ import {Movie} from "../../models/movie.model";
   styleUrls: ['./movie-card.component.css']
 })
 export class MovieCardComponent implements OnInit {
-  @Input() mov:Movie[]=[];
+  @Input() mov:any;
   constructor() { }
 
   ngOnInit(): void {
