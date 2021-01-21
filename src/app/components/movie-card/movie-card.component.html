@@ -1,0 +1,22 @@
+<div class="card animated  fadeInDown " >
+  <img
+    src="https://image.tmdb.org/t/p/w500{{ mov.poster_path }}"
+    class="card-img-top"
+  />
+  <div class="card-body">
+    <h5 class="card-title text-truncate">{{ mov.title }}</h5>
+    <p class="card-text text-truncate">
+      {{ mov.overview }}
+    </p>
+    <div class="d-flex justify-content-between">
+      <p class="card-text text-truncate justify-content-start">
+        Range: {{ mov.vote_average }}
+      </p>
+      <p class="card-text text-truncate justify-content-end text-muted">
+        {{ mov.release_date }}
+      </p>
+    </div>
+    <p>{{ mov.genre_ids  }}</p>
+    <a href="#" class="btn btn-primary">Go somewhere</a>
+  </div>
+</div>
