@@ -8,15 +8,15 @@ import { Injectable } from '@angular/core';
 })
 export class MovieService {
 
-  urlPoplar = "https://api.themoviedb.org/3/movie/popular?api_key=53863d3939659f1da83139fdb1862345&language=en-US&page=1";
+  urlPoplar = "https://api.themoviedb.org/3/movie/popular?api_key=53863d3939659f1da83139fdb1862345&language=en-US&page=";
   urlCat ="https://api.themoviedb.org/3/genre/movie/list?api_key=53863d3939659f1da83139fdb1862345&language=en-US"
   urlTopRated="https://api.themoviedb.org/3/movie/top_rated?api_key=53863d3939659f1da83139fdb1862345&language=en-US&page=1";
   urlUpcoming = "https://api.themoviedb.org/3/movie/upcoming?api_key=53863d3939659f1da83139fdb1862345&language=en-US&page=1"
 
   constructor(private http: HttpClient) { }
 
-  getMovies() {
-    return this.http.get<Res>(this.urlPoplar)
+  getMovies(id:number) {
+    return this.http.get<Res>(this.urlPoplar+id)
   }
 
   getCategoryList() {
@@ -37,6 +37,8 @@ export class MovieService {
   getUpcoming(){
     return this.http.get<Res>(this.urlUpcoming)
   }
+
+
 
 
 }

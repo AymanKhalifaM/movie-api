@@ -1,18 +1,36 @@
-<div id="main-header" class="text-primary">
-  <div class="card">
-    <img class="card-img main-img" src="https://image.tmdb.org/t/p/w500{{ movieDetalis.backdrop_path }}" *ngIf="movieDetalis">
-    <div class="card-img-overlay" *ngIf="movieDetalis">
-      <h1 class="mt-2">{{ movieDetalis.title }}</h1>
-        <h2 class="lead" *ngIf="movieDetalis.overview">{{ movieDetalis.overview }}</h2>
-        <h2 class="lead" *ngIf="movieDetalis.status">Status : {{ movieDetalis.status }}</h2>
-        <h2 class="lead" *ngIf="movieDetalis.release_date">Release Date :  {{ movieDetalis.release_date | date }}</h2>
-        <h2 class="lead" *ngIf="movieDetalis.original_language">Language : {{ movieDetalis.original_language | uppercase }}</h2>
-        <h2 class="lead" *ngIf="movieDetalis.popularity">Popularity : {{ movieDetalis.popularity  }}</h2>
-        <h2 class="lead" *ngIf="movieDetalis.production_companies">Production Company : {{ movieDetalis.production_companies[0].name  }} </h2>
-        <h2 class="lead" *ngIf="movieDetalis.production_countries">Production Countries : {{ movieDetalis.production_countries[0].name  }}</h2>
-        <h2 class="lead" *ngIf="movieDetalis.revenue">Revenue : {{ movieDetalis.revenue | currency:'USD'  }}</h2>
-      <a [href]="movieDetalis.homepage" target="_blank" class="btn btn-outline-primary mt-2">Know More</a>
+<div id="main-header" >
+  <img class="card-img main-img" src="https://image.tmdb.org/t/p/w500{{ movieDetalis.backdrop_path }}" *ngIf="movieDetalis.backdrop_path">
+</div>
+
+
+
+<div class="container mt-5">
+  <div class="card text-primary"  >
+    <div class="row ">
+      <div class="col-md-4">
+        <img src="https://image.tmdb.org/t/p/w500{{ movieDetalis.poster_path }}"  class="img-fluid" *ngIf="movieDetalis.poster_path">
+      </div>
+      <div class="col-md-8 ">
+        <div class="card-body">
+          <h1 class="card-title">{{movieDetalis.title}}</h1>
+          <h4 class="card-title">{{movieDetalis.tagline}}</h4>
+          <p class="card-text" >{{movieDetalis.overview}}</p>
+          <p class="card-text" > Budget :{{movieDetalis.budget |currency:'USD'}}</p>
+          <p class="card-text" > Revenue :{{movieDetalis.revenue |currency:'USD'}}</p>
+          <p class="card-text" > Language :{{movieDetalis.original_language}}</p>
+          <p class="card-text" > Release Date :{{movieDetalis.release_date | date}}</p>
+          <div class="progress">
+            <div class="progress-bar progress-bar-striped" role="progressbar" [style.width]="movieDetalis.vote_average *10 + '%'" aria-valuenow="" aria-valuemin="" aria-valuemax="100">{{movieDetalis.vote_average}}</div>
+          </div>
+          <div class=" mt-3">
+            <a href="{{ movieDetalis.homepage }}" target="_blank" class="btn btn-outline-primary">Know More</a>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
-
 </div>
+
+
+
+

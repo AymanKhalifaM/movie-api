@@ -1,0 +1,13 @@
+
+$theme-colors: (
+  "primary": #DAAB2C,
+);
+
+
+
+
+@function theme-color($key: "primary") {
+  @return map-merge($theme-colors, $key);
+
+}
+@import "node_modules/bootstrap/scss/bootstrap";

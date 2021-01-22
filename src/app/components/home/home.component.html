@@ -11,11 +11,22 @@
         <span class="sr-only">Loading...</span>
       </div>
       <div class="row">
-          <input type="text" class="form-control form-control-lg mt-4 " placeholder="You Can Search Here" [(ngModel)]="catFilter">
-        <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12 mt-2" *ngFor="let mov of movie | filter:catFilter">
+          <input type="text" class="form-control form-control-lg mt-4 " placeholder="You Can Search Here" [(ngModel)]="filterCat">
+        <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12 mt-2" *ngFor="let mov of movie | filter:catFilter | filter:filterCat">
           <app-movie-card routerLink="/movie-details" [queryParams]="{id:mov.id}" [mov]="mov"></app-movie-card>
         </div>
       </div>
+    </div>
+  </div>
+</div><div class="container mt-2">
+  <div class="row">
+    <div class="col-md-3 offset-6">
+      <nav aria-label="Page navigation example mt-2">
+        <ul class="pagination">
+          <li class="page-item"><a class="page-link" (click)="previousPageForMovies()">Previous</a></li>
+          <li class="page-item"><a class="page-link" (click)="nextPageForMovies()">Next</a></li>
+        </ul>
+      </nav>
     </div>
   </div>
 </div>

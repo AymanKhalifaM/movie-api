@@ -1,4 +1,6 @@
 #main{
-  background-image: url("src/assets/pexels-photo-3052361.jpeg");
-  z-index: 1;
+  background-image: url("src/assets/11.jpeg");
+  /*background-size: cover;*/
+  /*background-repeat: no-repeat;*/
+  z-index: -1;
 }

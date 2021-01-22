@@ -28,8 +28,9 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss",
-              "node_modules/bootstrap/dist/css/bootstrap.min.css"
+              "src/style-custom.scss",
+              "src/styles.scss"
+
             ],
             "scripts": []
           },

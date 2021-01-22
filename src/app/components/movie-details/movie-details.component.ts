@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
 import {MovieService} from "../../services/movie.service";
+import {Movie} from "../../models/movie.model";
 
 @Component({
   selector: 'app-movie-details',
@@ -10,7 +11,10 @@ import {MovieService} from "../../services/movie.service";
 export class MovieDetailsComponent implements OnInit {
   movieId :any;
   movieDetalis:any;
-  constructor(private route:ActivatedRoute , private movSer:MovieService) { }
+  vote:number= 10;
+  constructor(private route:ActivatedRoute , private movSer:MovieService ) {
+
+  }
 
   ngOnInit(): void {
     //get movie id from params
@@ -18,9 +22,10 @@ export class MovieDetailsComponent implements OnInit {
       this.movieId = r['id'];
     })
     //send id to service to get movie details
-    this.movSer.getMovieDetails(this.movieId).subscribe(res=>{
-      // console.log(res)
-     this.movieDetalis = res;
+    this.movSer.getMovieDetails(this.movieId).subscribe((res)=>{
+      console.log(res)
+      this.movieDetalis = res;
+
     },error => {
       console.log(error)
       //error hanlder

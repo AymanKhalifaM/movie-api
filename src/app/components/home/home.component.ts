@@ -1,7 +1,7 @@
-import { Cat } from './../../models/cat.model';
-import { Category } from './../../models/category.model';
-import { Res } from './../../models/res.model';
-import { MovieService } from './../../services/movie.service';
+import { Cat } from '../../models/cat.model';
+import { Category } from '../../models/category.model';
+import { Res } from '../../models/res.model';
+import { MovieService } from '../../services/movie.service';
 import { Component, OnInit } from '@angular/core';
 import { Movie } from 'src/app/models/movie.model';
 import { ActivatedRoute } from '@angular/router';
@@ -23,10 +23,11 @@ import {animate, animation, style, transition, trigger} from "@angular/animation
 })
 export class HomeComponent implements OnInit {
   catFilter: any;
+  filterCat:any;
   movie: Movie[] = [];
   cat:Category[] = [];
   loading:boolean = true;
-
+  id:number= 1;
   constructor(private movSer: MovieService, private route:ActivatedRoute) { }
 
   ngOnInit() {
@@ -38,7 +39,7 @@ export class HomeComponent implements OnInit {
     })
 
     //get most popular movies
-    this.movSer.getMovies().subscribe((result: Res) => {
+    this.movSer.getMovies(this.id).subscribe((result: Res) => {
       this.loading = false
       // console.log(result)
       this.movie.push(...result.results)
@@ -59,6 +60,36 @@ export class HomeComponent implements OnInit {
       //error handler here
     })
   }
+  // get next page of movies
+  nextPageForMovies(){
+    this.id +=1;
+    this.movSer.getMovies(this.id).subscribe((result: Res) => {
+      this.loading = false
+      // console.log(result)
+      this.movie.splice(0,this.movie.length);
+      this.movie.push(...result.results)
+      // console.log(this.movie)
 
+    }, error => {
+      console.log(error)
+      //error handler here
+    })
+  }
+  //get pravious page
+  previousPageForMovies(){
+    if(this.id !== 1){
+      this.id -=1;
+      this.movSer.getMovies(this.id).subscribe((result: Res) => {
+        this.loading = false
+        // console.log(result)
+        this.movie.splice(0,this.movie.length);
+        this.movie.push(...result.results)
+        // console.log(this.movie)
 
+      }, error => {
+        console.log(error)
+        //error handler here
+      })
+    }
+  }
 }
