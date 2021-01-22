@@ -6,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
 import { Movie } from 'src/app/models/movie.model';
 import { ActivatedRoute } from '@angular/router';
 import {animate, animation, style, transition, trigger} from "@angular/animations";
+import { ScrollToService, ScrollToConfigOptions } from '@nicky-lenaers/ngx-scroll-to';
 
 
 @Component({
@@ -28,7 +29,7 @@ export class HomeComponent implements OnInit {
   cat:Category[] = [];
   loading:boolean = true;
   id:number= 1;
-  constructor(private movSer: MovieService, private route:ActivatedRoute) { }
+  constructor(private movSer: MovieService, private route:ActivatedRoute ,private scrollToService: ScrollToService) { }
 
   ngOnInit() {
     //get categories to filter
@@ -74,6 +75,13 @@ export class HomeComponent implements OnInit {
       console.log(error)
       //error handler here
     })
+
+    const config: ScrollToConfigOptions = {
+      target: 'destination'
+    };
+
+    this.scrollToService.scrollTo(config);
+
   }
   //get pravious page
   previousPageForMovies(){
@@ -91,5 +99,13 @@ export class HomeComponent implements OnInit {
         //error handler here
       })
     }
+
+
+
+    const config: ScrollToConfigOptions = {
+      target: 'destination'
+    };
+
+    this.scrollToService.scrollTo(config);
   }
 }

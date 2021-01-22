@@ -13,6 +13,7 @@ import {FormsModule} from "@angular/forms";
 import { MovieDetailsComponent } from './components/movie-details/movie-details.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { UpcominComponent } from './components/upcomin/upcomin.component';
+import { ScrollToModule } from '@nicky-lenaers/ngx-scroll-to';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,8 @@ import { UpcominComponent } from './components/upcomin/upcomin.component';
     HttpClientModule,
     Ng2SearchPipeModule,
     FormsModule,
+    ScrollToModule.forRoot()
+
     // BrowserAnimationsModule
   ],
   providers: [],
