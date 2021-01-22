@@ -103,7 +103,9 @@ export class HomeComponent implements OnInit {
 
 
     const config: ScrollToConfigOptions = {
-      target: 'destination'
+      target: 'destination',
+      duration:1000,
+      easing: "easeOutElastic"
     };
 
     this.scrollToService.scrollTo(config);

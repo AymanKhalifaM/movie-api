@@ -6,7 +6,7 @@
         <a routerLink="/" [class.active]="catFilter == item.id" [queryParams]="{cat: item.id}" class="list-group-item text-primary list-group-item-action text-center text-truncate">{{ item.name  }}</a>
       </div>
     </div>
-    <div class="col-9">
+    <div class="col-md-9 col-sm-12">
       <div class="spinner-grow text-primary" role="status" *ngIf="loading">
         <span class="sr-only">Loading...</span>
       </div>
