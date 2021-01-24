@@ -5,7 +5,7 @@ import { MovieService } from '../../services/movie.service';
 import { Component, OnInit } from '@angular/core';
 import { Movie } from 'src/app/models/movie.model';
 import { ActivatedRoute } from '@angular/router';
-import {animate, animation, style, transition, trigger} from "@angular/animations";
+import { animate, animation, style, transition, trigger } from "@angular/animations";
 import { ScrollToService, ScrollToConfigOptions } from '@nicky-lenaers/ngx-scroll-to';
 
 
@@ -24,12 +24,12 @@ import { ScrollToService, ScrollToConfigOptions } from '@nicky-lenaers/ngx-scrol
 })
 export class HomeComponent implements OnInit {
   catFilter: any;
-  filterCat:any;
+  filterCat: any;
   movie: Movie[] = [];
-  cat:Category[] = [];
-  loading:boolean = true;
-  id:number= 1;
-  constructor(private movSer: MovieService, private route:ActivatedRoute ,private scrollToService: ScrollToService) { }
+  cat: Category[] = [];
+  loading: boolean = true;
+  id: number = 1;
+  constructor(private movSer: MovieService, private route: ActivatedRoute, private scrollToService: ScrollToService) { }
 
   ngOnInit() {
     //get categories to filter
@@ -52,7 +52,7 @@ export class HomeComponent implements OnInit {
     })
 
     //get all categories list from api
-    this.movSer.getCategoryList().subscribe((r:Cat) => {
+    this.movSer.getCategoryList().subscribe((r: Cat) => {
       // console.log(r)
       this.cat.push(...r.genres)
       // console.log(this.cat)
@@ -62,12 +62,12 @@ export class HomeComponent implements OnInit {
     })
   }
   // get next page of movies
-  nextPageForMovies(){
-    this.id +=1;
+  nextPageForMovies() {
+    this.id += 1;
     this.movSer.getMovies(this.id).subscribe((result: Res) => {
       this.loading = false
       // console.log(result)
-      this.movie.splice(0,this.movie.length);
+      this.movie.splice(0, this.movie.length);
       this.movie.push(...result.results)
       // console.log(this.movie)
 
@@ -84,13 +84,13 @@ export class HomeComponent implements OnInit {
 
   }
   //get pravious page
-  previousPageForMovies(){
-    if(this.id !== 1){
-      this.id -=1;
+  previousPageForMovies() {
+    if (this.id !== 1) {
+      this.id -= 1;
       this.movSer.getMovies(this.id).subscribe((result: Res) => {
         this.loading = false
         // console.log(result)
-        this.movie.splice(0,this.movie.length);
+        this.movie.splice(0, this.movie.length);
         this.movie.push(...result.results)
         // console.log(this.movie)
 
@@ -104,7 +104,7 @@ export class HomeComponent implements OnInit {
 
     const config: ScrollToConfigOptions = {
       target: 'destination',
-      duration:1000,
+      duration: 1000,
       easing: "easeOutElastic"
     };
 
